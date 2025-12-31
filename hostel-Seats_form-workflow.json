@@ -1,0 +1,143 @@
+{
+  "name": "Airtable 01",
+  "nodes": [
+    {
+      "parameters": {
+        "formTitle": "ROOM",
+        "formDescription": "What Room do you like?",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "Your Name",
+              "placeholder": "Type Your Name",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "What Room do you like?",
+              "fieldType": "dropdown",
+              "fieldOptions": {
+                "values": [
+                  {
+                    "option": "Single Room"
+                  },
+                  {
+                    "option": "Delux Room"
+                  },
+                  {
+                    "option": "Suit"
+                  }
+                ]
+              },
+              "requiredField": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.3,
+      "position": [
+        0,
+        0
+      ],
+      "id": "3b7082b7-bceb-4353-9914-d75817d71ed8",
+      "name": "On form submission",
+      "webhookId": "975549eb-8093-43b8-9cbb-b28a54dec65e"
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "base": {
+          "__rl": true,
+          "value": "appKdnsqyQrtk7zE1",
+          "mode": "list",
+          "cachedResultName": "Test Airtable",
+          "cachedResultUrl": "https://airtable.com/appKdnsqyQrtk7zE1"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblvd9wlvu4xAR4qc",
+          "mode": "list",
+          "cachedResultName": "Table 1",
+          "cachedResultUrl": "https://airtable.com/appKdnsqyQrtk7zE1/tblvd9wlvu4xAR4qc"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Name": "={{ $json['Your Name'] }}",
+            "Room": "={{ $json['What Room do you like?'] }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Name",
+              "displayName": "Name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Room",
+              "displayName": "Room",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        208,
+        0
+      ],
+      "id": "8df8c4f3-670f-4438-8619-2d97f3e4ebaf",
+      "name": "Create a record",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "XwcN4oNge8Meqmuw",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "On form submission": {
+      "main": [
+        [
+          {
+            "node": "Create a record",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Asia/Karachi",
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "versionId": "6fae1e6a-7390-49c2-9c19-9cb4fecb7629",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "dc070cffbe5f7813badc49451dd707755f7c06c0952b3d4e56555be0bd84e726"
+  },
+  "id": "gifdPucN0rovLSUD",
+  "tags": []
+}
